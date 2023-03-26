@@ -19,6 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+
   deploy:
     environment:
       name: github-pages
@@ -36,7 +37,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './dist/public'
+          path: './dist/public/index.html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
