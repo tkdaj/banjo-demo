@@ -14,7 +14,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/banjo-demo/',
+  base: '/banjo-demo',
   server: {
     port: 3000,
     open: true,
