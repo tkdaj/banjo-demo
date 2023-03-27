@@ -15,13 +15,13 @@ export function MainModal(props: MainModalProps) {
             <Table.Header>
               <Table.Row>
                 <Table.Cell headerCell>
-                  <Typography>title 1</Typography>
+                  <Typography>Head 1</Typography>
                 </Table.Cell>
                 <Table.Cell headerCell>
-                  <Typography>title 2</Typography>
+                  <Typography>Head 2</Typography>
                 </Table.Cell>
                 <Table.Cell headerCell>
-                  <Typography>title 3</Typography>
+                  <Typography>Head 3</Typography>
                 </Table.Cell>
               </Table.Row>
             </Table.Header>
@@ -48,7 +48,15 @@ export function MainModal(props: MainModalProps) {
               </Table.Cell>
             </Table.Body>
             <Table.Footer>
-              <Typography>Some Footer Stuff</Typography>
+              <Table.Cell>
+                <Typography>Foot 1</Typography>
+              </Table.Cell>
+              <Table.Cell>
+                <Typography>Foot 2</Typography>
+              </Table.Cell>
+              <Table.Cell>
+                <Typography>Foot 3</Typography>
+              </Table.Cell>
             </Table.Footer>
           </Table>
         </Modal.Body>

@@ -25,11 +25,6 @@ export function GlobalStyles() {
       /* default to 100% of the browser's default font size (16px). We'll use this as a base for our rem units. */
       font-size: 100%;
 
-      html,
-      body {
-        margin: 0;
-      }
-
       body {
         font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
           sans-serif;
@@ -54,14 +49,14 @@ export default function Root() {
 
   return (
     <StyleRegistry styles={sheets}>
-      <Html lang="en">
+      <Html lang="en" style={{ height: '100%' }}>
         <Head>
           <Title>Banjo Demo</Title>
           <Meta charset="utf-8" />
           <Meta name="viewport" content="width=device-width, initial-scale=1" />
           <Link rel="icon" href="/favicon.png" />
         </Head>
-        <Body>
+        <Body style={{ margin: 0, 'min-height': '100%' }}>
           <ThemeProvider>
             <GlobalStyles />
             <Suspense>

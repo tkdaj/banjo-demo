@@ -9,7 +9,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
-    solid({ adapter: solidStatic(), ssr: false }),
+    solid({ adapter: solidStatic() }),
     solidStyled({
       filter: {
         include: 'src/**/*.tsx',
