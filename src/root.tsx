@@ -15,33 +15,21 @@ import {
   Title,
 } from 'solid-start';
 import type { StyleData } from 'solid-styled';
-import { css, renderSheets, StyleRegistry } from 'solid-styled';
+import { renderSheets, StyleRegistry } from 'solid-styled';
 
 import { ThemeProvider } from '@banjo/theme';
 
-export function GlobalStyles() {
-  css`
-    @global {
-      /* default to 100% of the browser's default font size (16px). We'll use this as a base for our rem units. */
-      font-size: 100%;
+const htmlStyles = {
+  height: '100%',
+};
 
-      body {
-        font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-          sans-serif;
-      }
-
-      /* make smaller text for smaller devices */
-
-      @media all and (max-width: 600px) {
-        html {
-          font-size: 75%;
-        }
-      }
-    }
-  `;
-
-  return null;
-}
+const bodyStyles = {
+  'font-size': '100%',
+  'min-height': '100%',
+  'font-family':
+    'Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",  sans-serif',
+  margin: '0',
+};
 
 export default function Root() {
   const sheets: StyleData[] = [];
@@ -49,16 +37,15 @@ export default function Root() {
 
   return (
     <StyleRegistry styles={sheets}>
-      <Html lang="en" style={{ height: '100%' }}>
+      <Html lang="en" style={htmlStyles}>
         <Head>
           <Title>Banjo Demo</Title>
           <Meta charset="utf-8" />
           <Meta name="viewport" content="width=device-width, initial-scale=1" />
           <Link rel="icon" href="/favicon.png" />
         </Head>
-        <Body style={{ margin: 0, 'min-height': '100%' }}>
+        <Body style={bodyStyles}>
           <ThemeProvider>
-            <GlobalStyles />
             <Suspense>
               <ErrorBoundary>
                 <Routes>

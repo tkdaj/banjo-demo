@@ -19,7 +19,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-
   deploy:
     environment:
       name: github-pages
@@ -33,6 +32,7 @@ jobs:
       - name: Build
         uses: actions/setup-node@v3
       - run: npm ci
+      - run: npm run check-code
       - run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
