@@ -15,7 +15,7 @@ export default function Home() {
         variant={themeName() === 'dark' ? 'dominant' : 'primary'}
         onClick={() => setOpen((prevVal) => !prevVal)}
       >
-        My Button
+        {`${open() ? 'Hide' : 'Show'} Modal`}
       </Button>
       <MainModal isOpen={open} setIsOpen={setOpen} />
     </>
