@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "ESNext",
@@ -11,7 +12,9 @@
     "types": ["solid-start/env"],
     "baseUrl": "./",
     "paths": {
-      "~/*": ["./src/*"]
+      "@banjo/utils": ["src/utils.ts"],
+      "@banjo/atoms": ["src/design-system/atoms/index.ts"],
+      "@banjo/theme": ["src/design-system/theme/index.ts"]
     }
   }
 }

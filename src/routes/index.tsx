@@ -1,18 +1,23 @@
-import { Title } from "solid-start";
-import Counter from "~/components/Counter";
+import { createSignal } from 'solid-js';
+
+import { Button } from '@banjo/atoms';
+import { ThemeToggleButton, useTheme } from '@banjo/theme';
+import { MainModal } from 'src/components/MainModal';
 export default function Home() {
+  const { themeName } = useTheme();
+  const [open, setOpen] = createSignal(true);
+
   return (
-    <main>
-      <Title>Hello World</Title>
-      <h1>Hello world!</h1>
-      <Counter />
-      <p>
-        Visit{" "}
-        <a href="https://start.solidjs.com" target="_blank">
-          start.solidjs.com
-        </a>{" "}
-        to learn how to build SolidStart apps.
-      </p>
-    </main>
+    <>
+      <ThemeToggleButton />
+      <br />
+      <Button
+        variant={themeName() === 'dark' ? 'dominant' : 'primary'}
+        onClick={() => setOpen((prevVal) => !prevVal)}
+      >
+        My Button
+      </Button>
+      <MainModal isOpen={open} setIsOpen={setOpen} />
+    </>
   );
 }
