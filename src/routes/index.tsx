@@ -13,7 +13,7 @@ export default function Home() {
       <br />
       <Button
         variant={themeName() === 'dark' ? 'dominant' : 'primary'}
-        onClick={() => setOpen((prevVal) => !prevVal)}
+        onClick={() => setOpen((prev) => !prev)}
       >
         {`${open() ? 'Hide' : 'Show'} Modal`}
       </Button>
