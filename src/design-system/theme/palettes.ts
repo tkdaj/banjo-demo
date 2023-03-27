@@ -12,7 +12,7 @@ export const palettes: PaletteOptionsObject = {
       danger: '#F16063',
       warning: '#F7936F',
       success: '#66CB9F',
-      dominant: '#FFFFFF',
+      dominant: '#F2F2F7',
       complementary: '#16192C',
       textHeadingDark: '#27272E',
       textBodyMuted: '#718096',
