@@ -1,7 +1,7 @@
 import { mergeProps } from 'solid-js';
 
 import type { Theme } from '@banjo/theme';
-import { useTheme, pixelsToRem } from '@banjo/theme';
+import { useTheme, pxToRem } from '@banjo/theme';
 
 export type ButtonSize = 'small' | 'medium';
 export type ButtonVariant = 'primary' | 'secondary' | 'dominant';
@@ -21,16 +21,16 @@ interface ButtonSizeConfig {
 function getSizeStyles(size: ButtonSize): ButtonSizeConfig {
   const sizeConfigs = {
     small: {
-      'border-radius': pixelsToRem(4),
-      'font-size': pixelsToRem(10),
-      padding: `${pixelsToRem(8)} ${pixelsToRem(16)}`,
-      'line-height': pixelsToRem(12),
+      'border-radius': pxToRem(4),
+      'font-size': pxToRem(10),
+      padding: `${pxToRem(8)} ${pxToRem(16)}`,
+      'line-height': pxToRem(12),
     },
     medium: {
-      'border-radius': pixelsToRem(6),
-      'font-size': pixelsToRem(12),
-      padding: `${pixelsToRem(12)} ${pixelsToRem(20)}`,
-      'line-height': pixelsToRem(10),
+      'border-radius': pxToRem(6),
+      'font-size': pxToRem(12),
+      padding: `${pxToRem(12)} ${pxToRem(20)}`,
+      'line-height': pxToRem(10),
     },
   };
   return sizeConfigs[size];

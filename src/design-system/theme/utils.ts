@@ -30,7 +30,7 @@ export function getTheme<Option extends PaletteOption>(palette: Option) {
   };
 }
 
-export function pixelsToRem(px: number): string {
+export function pxToRem(px: number): string {
   return `${px / 16}rem`;
 }
 
