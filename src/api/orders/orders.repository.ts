@@ -27,7 +27,8 @@ function saveOrders(order: Order[]) {
 
 function loadOrders(): Order[] {
   const data = localStorage.getItem(localhostKey);
-  return data ? JSON.parse(data) : [];
+  const fetchedData: Order[] = data ? JSON.parse(data) : [];
+  return fetchedData.map((order) => ({ ...order, dueDate: new Date(order.dueDate) }));
 }
 
 function delay<T>(fn: () => T) {

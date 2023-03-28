@@ -9,7 +9,7 @@ type CellProps = ParentProps<ComponentProps<'th'> | ComponentProps<'td'>> & {
   headerCell?: boolean;
 };
 const cellDefaultStyles = {
-  'text-align': 'center',
+  'text-align': 'left',
   padding: `${pxToRem(18)} ${pxToRem(24)}`,
 };
 
