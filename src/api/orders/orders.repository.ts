@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import type { Order } from '@banjo/types';
 
+import { mockOrders } from './mockOrders';
+
 export interface OrderRepository {
   getOrders(): Promise<Order[]>;
   addOrder(newOrder: Omit<Order, 'id'>): Promise<boolean>;
@@ -9,6 +11,15 @@ export interface OrderRepository {
 
 const localhostKey = 'demoDbKey';
 const delayMS = 120;
+
+function initializeMockDb() {
+  const savedOrders = loadOrders();
+  if (savedOrders.length === 0) {
+    saveOrders(mockOrders);
+  }
+}
+
+initializeMockDb();
 
 function saveOrders(order: Order[]) {
   localStorage.setItem(localhostKey, JSON.stringify(order));

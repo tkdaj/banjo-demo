@@ -42,11 +42,12 @@ export const typographyConfigs = {
     color: theme.palette.colors.textHeadingDark,
   } as Conf<'span'>,
   tableHeadHeading: {
-    tag: 'th',
+    tag: 'span',
     'font-size': pxToRem(10),
     'line-height': pxToRem(16),
     'font-weight': 600,
     'text-transform': 'uppercase',
+    padding: `${pxToRem(18)} ${pxToRem(24)}`,
     color: theme.palette.colors.tableHeadText,
-  } as Conf<'th'>,
+  } as Conf<'span'>,
 } as const;

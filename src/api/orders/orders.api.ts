@@ -1,7 +1,7 @@
 import type { OrderRepository } from './orders.repository';
 import { orderRepo } from './orders.repository';
 
-export const choreApi: OrderRepository = {
+export const orderApi: OrderRepository = {
   getOrders() {
     return orderRepo.getOrders();
   },

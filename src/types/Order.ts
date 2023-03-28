@@ -1,7 +1,7 @@
 const PRIORITY = {
-  LOW: 'Low',
-  MEDIUM: 'Medium',
-  HIGH: 'High',
+  Low: 'Low',
+  Medium: 'Medium',
+  High: 'High',
 };
 
 export type Priority = keyof typeof PRIORITY;
