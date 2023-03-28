@@ -6,6 +6,7 @@ export const palettes: PaletteOptionsObject = {
     colors: {
       white: '#FFFFFF',
       black: '#000000',
+      gray100: '#F7FAFC',
       primary: '#4C6FFF',
       secondary: '#E4ECF7',
       tertiary: '#505780',
@@ -30,6 +31,7 @@ export const palettes: PaletteOptionsObject = {
     colors: {
       white: '#FFFFFF',
       black: '#000000',
+      gray100: '#080302',
       primary: '#4C6FFF',
       secondary: '#E4ECF7',
       tertiary: '#505780',

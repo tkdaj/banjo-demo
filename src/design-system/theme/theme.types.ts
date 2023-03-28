@@ -10,6 +10,7 @@ export interface PaletteDefinition<PaletteName extends PaletteOption> {
 export interface ColorsObject {
   white: string;
   black: string;
+  gray100: string;
   primary: string;
   secondary: string;
   danger: string;

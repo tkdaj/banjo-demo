@@ -35,27 +35,29 @@ export default function Home() {
   );
 
   return (
-    <div style={appContainerStyles()}>
-      <div style={containerStyles()}>
-        <div style={headerStyles()}>
-          <Typography
-            style={{ 'margin-left': pxToRem(24), 'margin-right': 'auto' }}
-            configName="pageHeader"
-          >
-            Orders
-          </Typography>
-          <ThemeToggleButton />
-          <br />
-          <Button
-            variant={themeName() === 'dark' ? 'dominant' : 'primary'}
-            onClick={() => setOpen((prev) => !prev)}
-          >
-            {`${open() ? 'Hide' : 'Show'} Modal`}
-          </Button>
+    <>
+      <div style={appContainerStyles()}>
+        <div style={containerStyles()}>
+          <div style={headerStyles()}>
+            <Typography
+              style={{ 'margin-left': pxToRem(24), 'margin-right': 'auto' }}
+              configName="pageHeader"
+            >
+              Orders
+            </Typography>
+            <ThemeToggleButton />
+            <br />
+            <Button
+              variant={themeName() === 'dark' ? 'dominant' : 'primary'}
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              {`${open() ? 'Hide' : 'Show'} Modal`}
+            </Button>
+          </div>
+          <OrderTable />
         </div>
-        <OrderTable />
-        <NewOrderModal isOpen={open} setIsOpen={setOpen} />
       </div>
-    </div>
+      <NewOrderModal isOpen={open} setIsOpen={setOpen} />
+    </>
   );
 }

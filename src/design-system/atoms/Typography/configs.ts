@@ -2,6 +2,14 @@ import { pxToRem, useTheme } from '@banjo/theme';
 
 const { theme } = useTheme();
 
+// NOTE: In a real design-system, we would not just stick all of the styles here and name
+// them based on where they're used. Rather, there would be more generic names for the
+// font variations.  (small, heading1, heading3, buttonStandard, buttonLarge, are maybe some examples)
+// Those configurations would contain default stylings, but the Typography component would accept props
+// to allow the ability to override any of those styles if necessary.
+
+// example:  <Typography fontSize={28} lineHeight={16} />
+
 export const typographyConfigs = {
   modalTitle: {
     tag: 'h2',
@@ -10,6 +18,8 @@ export const typographyConfigs = {
       'line-height': pxToRem(38),
       'font-weight': 600,
       'text-align': 'center',
+      'margin-top': 0,
+      'margin-bottom': pxToRem(12),
       color: theme.palette.colors.textHeadingDark,
     },
   },
@@ -19,6 +29,9 @@ export const typographyConfigs = {
       'font-size': pxToRem(14),
       'line-height': pxToRem(23),
       'font-weight': 400,
+      'text-align': 'center',
+      'margin-top': 0,
+      'margin-bottom': pxToRem(46),
       color: theme.palette.colors.textBodyMuted,
     },
   },
@@ -41,6 +54,16 @@ export const typographyConfigs = {
       'font-weight': 500,
       color: theme.palette.colors.textBodyLight,
       cursor: 'pointer',
+    },
+  },
+  formHelpText: {
+    tag: 'span',
+    styles: {
+      'font-size': pxToRem(11),
+      'line-height': pxToRem(12),
+      'font-weight': 400,
+      color: theme.palette.colors.textBodyMuted,
+      'margin-bottom': pxToRem(36),
     },
   },
   tableBodyText: {
