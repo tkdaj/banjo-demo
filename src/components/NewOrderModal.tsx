@@ -1,7 +1,12 @@
-import { createMemo } from 'solid-js';
+/* eslint-disable no-console */
+import { createMemo, For } from 'solid-js';
 
 import type { ModalProps } from '@banjo/atoms';
 import { Button, Modal, Typography } from '@banjo/atoms';
+import { pxToRem } from '@banjo/theme';
+import type { Priority } from '@banjo/types';
+import { PRIORITY } from '@banjo/types';
+import { departments } from 'src/api/orders/mockOrders';
 
 type MainModalProps = Omit<ModalProps, 'children'>;
 
@@ -10,7 +15,7 @@ export function NewOrderModal(props: MainModalProps) {
     () => `
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
   `
   );
   const footerStyles = createMemo(
@@ -30,7 +35,21 @@ export function NewOrderModal(props: MainModalProps) {
       </Modal.Header>
       <Modal.Body>
         <div style={bodyStyles()}>
-          <Typography configName="formHelpText">One fine body</Typography>
+          <Typography configName="formLabel">Team Member Name</Typography>
+          <input style={{ 'margin-bottom': pxToRem(30) }} type="text" />
+          <Typography configName="formLabel">Priority</Typography>
+          <select style={{ 'margin-bottom': pxToRem(30) }}>
+            <For each={Object.keys(PRIORITY)}>
+              {(priority) => <option value={priority}>{PRIORITY[priority as Priority]}</option>}
+            </For>
+          </select>
+          <Typography configName="formLabel">Team</Typography>
+          <select style={{ 'margin-bottom': pxToRem(30) }}>
+            <For each={departments}>{(dept) => <option value={dept}>{dept}</option>}</For>
+          </select>
+          <Typography configName="formLabel">Due Date</Typography>
+          <input style={{ 'margin-bottom': pxToRem(8) }} type="date" />
+          <Typography configName="formHelpText">Date format must be mm/dd/yyyyy</Typography>
         </div>
       </Modal.Body>
       <Modal.Footer>

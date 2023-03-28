@@ -54,6 +54,7 @@ export const typographyConfigs = {
       'font-weight': 500,
       color: theme.palette.colors.textBodyLight,
       cursor: 'pointer',
+      'margin-bottom': pxToRem(8),
     },
   },
   formHelpText: {

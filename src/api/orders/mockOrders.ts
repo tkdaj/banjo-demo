@@ -122,3 +122,5 @@ export const mockOrders: Order[] = [
     dueDate: new Date('2023-04-16'),
   },
 ];
+
+export const departments = Array.from(new Set(mockOrders.map((order) => order.team)));
