@@ -14,12 +14,23 @@ export const typographyConfigs = {
     },
   },
   modalSubTitle: {
-    tag: 'h4',
+    tag: 'h6',
     styles: {
       'font-size': pxToRem(14),
       'line-height': pxToRem(23),
       'font-weight': 400,
       color: theme.palette.colors.textBodyMuted,
+    },
+  },
+  pageHeader: {
+    tag: 'h6',
+    styles: {
+      'font-size': pxToRem(14),
+      'line-height': pxToRem(24),
+      'font-weight': 600,
+      'margin-top': pxToRem(18),
+      'margin-bottom': pxToRem(18),
+      color: theme.palette.colors.pageHeader,
     },
   },
   formLabel: {
@@ -29,6 +40,7 @@ export const typographyConfigs = {
       'line-height': pxToRem(17),
       'font-weight': 500,
       color: theme.palette.colors.textBodyLight,
+      cursor: 'pointer',
     },
   },
   tableBodyText: {

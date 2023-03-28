@@ -24,6 +24,7 @@ export interface ColorsObject {
   tableBorder: string;
   tableHeadText: string;
   tableHeadBackground: string;
+  pageHeader: string;
   strong: string;
   strongComplement: string;
 }
