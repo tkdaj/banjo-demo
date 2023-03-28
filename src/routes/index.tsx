@@ -2,7 +2,8 @@ import { createSignal } from 'solid-js';
 
 import { Button } from '@banjo/atoms';
 import { ThemeToggleButton, useTheme } from '@banjo/theme';
-import { MainModal } from 'src/components/MainModal';
+import { NewOrderModal } from 'src/components/NewOrderModal';
+import { OrderTable } from 'src/components/OrderTable';
 export default function Home() {
   const { themeName } = useTheme();
   const [open, setOpen] = createSignal(true);
@@ -17,7 +18,9 @@ export default function Home() {
       >
         {`${open() ? 'Hide' : 'Show'} Modal`}
       </Button>
-      <MainModal isOpen={open} setIsOpen={setOpen} />
+      <br />
+      <OrderTable />
+      <NewOrderModal isOpen={open} setIsOpen={setOpen} />
     </>
   );
 }

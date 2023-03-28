@@ -12,9 +12,11 @@
     "types": ["solid-start/env"],
     "baseUrl": "./",
     "paths": {
+      "@banjo/api": ["src/api/index.ts"],
       "@banjo/atoms": ["src/design-system/atoms/index.ts"],
       "@banjo/directives": ["src/directives/index.ts"],
       "@banjo/theme": ["src/design-system/theme/index.ts"],
+      "@banjo/types": ["src/types/index.ts"],
       "@banjo/utils": ["src/utils.ts"]
     }
   }

@@ -1,51 +1,52 @@
+import type { DynamicProps } from 'solid-js/web';
 import { Dynamic } from 'solid-js/web';
 
-import type { Accessor, ParentProps } from 'solid-js';
-import { mergeProps } from 'solid-js';
+import type { ComponentProps, JSX, ParentProps } from 'solid-js';
+import { createMemo, splitProps, mergeProps } from 'solid-js';
 
-import type { ColorName } from '@banjo/theme';
-import { useTheme } from '@banjo/theme';
+import { typographyConfigs } from './configs';
+import type { TagFromConfigName, TypographyConfigName } from './typography.types';
 
-const tags = {
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-  h5: 'h5',
-  h6: 'h6',
-  p: 'p',
-  span: 'span',
-  div: 'div',
-  label: 'label',
-  strong: 'strong',
-  small: 'small',
-  blockquote: 'blockquote',
-  cite: 'cite',
-  time: 'time',
-  code: 'code',
-  pre: 'pre',
-  em: 'em',
-} as const;
+const defaultConfigName: TypographyConfigName = 'tableBodyText';
 
-type Tag = keyof typeof tags;
+export type TypographyProps<ConfigName extends TypographyConfigName> = ParentProps<
+  ComponentProps<TagFromConfigName<ConfigName>>
+> & {
+  configName?: ConfigName;
+};
 
-const defaultTag: Tag = tags.span;
-const defaultColor: ColorName = 'textHeadingDark';
-
-interface TypographyProps extends ParentProps {
-  as?: Tag;
-  color?: ColorName;
-}
-
-export function Typography(props: TypographyProps) {
-  const { theme } = useTheme();
-  const merged = mergeProps({ as: defaultTag, color: defaultColor }, props);
-
-  const fontColor: Accessor<ColorName> = () => merged.color;
-
-  return (
-    <Dynamic component={merged.as} style={{ color: theme.palette.colors[fontColor()] }}>
-      {props.children}
-    </Dynamic>
+export function Typography<ConfigName extends TypographyConfigName = typeof defaultConfigName>(
+  _props: TypographyProps<ConfigName>
+) {
+  // give default values to some params
+  const merged = mergeProps(
+    { configName: defaultConfigName, style: {} as JSX.CSSProperties },
+    _props,
+    {}
   );
+  // get specific config/styles for this configName
+  const elementConfig = () => typographyConfigs[merged.configName as ConfigName];
+
+  // get any custom styles that the user passed in
+  const [ownStyleProps, props] = splitProps(merged, ['style']);
+
+  // remove the "tag" prop from from elementConfig() since it isn't a valid style
+  // eslint-disable-next-line solid/reactivity
+  const [tagProps, configStyles] = splitProps(elementConfig(), ['tag']) as unknown as [
+    { tag: TagFromConfigName<ConfigName> },
+    JSX.CSSProperties
+  ];
+
+  // create variable to hold custom styles and styles specific to the chosen config
+  const mergedStyles = createMemo(() => {
+    const finalStyles = mergeProps(configStyles, ownStyleProps.style) as JSX.CSSProperties;
+    return finalStyles;
+  });
+
+  const allProps = createMemo(() => {
+    const finalProps = mergeProps({ component: tagProps.tag }, mergedStyles());
+    return finalProps as DynamicProps<TagFromConfigName<ConfigName>>;
+  });
+
+  return <Dynamic {...allProps()}>{props.children}</Dynamic>;
 }

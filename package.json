@@ -19,6 +19,7 @@
   "type": "module",
   "devDependencies": {
     "@types/shelljs": "^0.8.11",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
@@ -47,7 +48,8 @@
     "solid-js": "^1.6.11",
     "solid-start": "^0.2.23",
     "solid-styled": "^0.8.1",
-    "undici": "^5.15.1"
+    "undici": "^5.15.1",
+    "uuid": "^9.0.0"
   },
   "engines": {
     "node": ">=18"

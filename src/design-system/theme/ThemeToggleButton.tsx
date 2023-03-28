@@ -5,7 +5,14 @@ import { useTheme } from './ThemeContext';
 export function ThemeToggleButton() {
   const { theme, setTheme } = useTheme();
   return (
-    <label>
+    <label
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      onMouseDown={(e) => {
+        e.preventDefault();
+      }}
+    >
       Theme: {capitalize(theme.palette.name)}
       <input
         type="checkbox"
