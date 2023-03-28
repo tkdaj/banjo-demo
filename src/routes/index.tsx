@@ -6,7 +6,7 @@ import { NewOrderModal } from 'src/components/NewOrderModal';
 import { OrderTable } from 'src/components/OrderTable';
 export default function Home() {
   const { themeName, theme } = useTheme();
-  const [open, setOpen] = createSignal(true);
+  const [open, setOpen] = createSignal(false);
 
   const appContainerStyles = createMemo(
     () => `

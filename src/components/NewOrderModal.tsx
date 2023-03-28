@@ -25,6 +25,9 @@ export function NewOrderModal(props: MainModalProps) {
     justify-content: space-between;
   `
   );
+
+  const closeModal = () => props.setIsOpen(false);
+
   return (
     <Modal isOpen={props.isOpen} setIsOpen={props.setIsOpen}>
       <Modal.Header>
@@ -34,7 +37,15 @@ export function NewOrderModal(props: MainModalProps) {
         </Typography>
       </Modal.Header>
       <Modal.Body>
-        <div style={bodyStyles()}>
+        <form
+          id="new-order-form"
+          noValidate
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log('submitting form');
+          }}
+          style={bodyStyles()}
+        >
           <Typography configName="formLabel">Team Member Name</Typography>
           <input style={{ 'margin-bottom': pxToRem(30) }} type="text" />
           <Typography configName="formLabel">Priority</Typography>
@@ -50,14 +61,14 @@ export function NewOrderModal(props: MainModalProps) {
           <Typography configName="formLabel">Due Date</Typography>
           <input style={{ 'margin-bottom': pxToRem(8) }} type="date" />
           <Typography configName="formHelpText">Date format must be mm/dd/yyyyy</Typography>
-        </div>
+        </form>
       </Modal.Body>
       <Modal.Footer>
         <div style={footerStyles()}>
-          <Button variant="secondary" onClick={() => console.log('clicked cancel')}>
+          <Button variant="secondary" onClick={closeModal}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={() => console.log('clicked save')}>
+          <Button form="new-order-form" type="submit" variant="primary">
             Submit
           </Button>
         </div>
