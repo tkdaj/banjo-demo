@@ -13,6 +13,7 @@
     "baseUrl": "./",
     "paths": {
       "@banjo/api": ["src/api/index.ts"],
+      "@banjo/assets": ["src/assets/index.ts"],
       "@banjo/atoms": ["src/design-system/atoms/index.ts"],
       "@banjo/directives": ["src/directives/index.ts"],
       "@banjo/theme": ["src/design-system/theme/index.ts"],

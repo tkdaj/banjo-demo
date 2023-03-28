@@ -1,24 +1,18 @@
+import type { JSX } from 'solid-js';
 import { mergeProps } from 'solid-js';
 
 import type { Theme } from '@banjo/theme';
 import { useTheme, pxToRem } from '@banjo/theme';
 
 export type ButtonSize = 'small' | 'medium';
-export type ButtonVariant = 'primary' | 'secondary' | 'dominant';
+export type ButtonVariant = 'primary' | 'secondary' | 'dominant' | 'naked';
 
 export interface ButtonConfiguration {
   variant?: ButtonVariant;
   size?: ButtonSize;
 }
 
-interface ButtonSizeConfig {
-  padding: string;
-  'font-size': string;
-  'border-radius': string;
-  'line-height': string;
-}
-
-function getSizeStyles(size: ButtonSize): ButtonSizeConfig {
+function getSizeStyles(size: ButtonSize): JSX.CSSProperties {
   const sizeConfigs = {
     small: {
       'border-radius': pxToRem(4),
@@ -36,12 +30,7 @@ function getSizeStyles(size: ButtonSize): ButtonSizeConfig {
   return sizeConfigs[size];
 }
 
-interface ButtonVariantConfig {
-  'background-color': string;
-  color: string;
-}
-
-function getVariantStyles(variant: ButtonVariant, theme: Theme): ButtonVariantConfig {
+function getVariantStyles(variant: ButtonVariant, theme: Theme): JSX.CSSProperties {
   const variantConfigs = {
     primary: {
       'background-color': theme.palette.colors.primary,
@@ -54,6 +43,10 @@ function getVariantStyles(variant: ButtonVariant, theme: Theme): ButtonVariantCo
     dominant: {
       'background-color': theme.palette.colors.dominant,
       color: theme.palette.colors.complementary,
+    },
+    naked: {
+      'background-color': 'transparent',
+      'box-shadow': 'none',
     },
   };
   return variantConfigs[variant];

@@ -20,6 +20,8 @@ export const palettes: PaletteOptionsObject = {
       tableBorder: '#EDF2F7',
       tableHeadText: '#8492A6',
       tableHeadBackground: '#FAFAFB',
+      strong: '#FFFFFF',
+      strongComplement: '#000000',
     },
   },
   dark: {
@@ -41,6 +43,8 @@ export const palettes: PaletteOptionsObject = {
       tableBorder: '#2C2C34',
       tableHeadText: '#8492A6',
       tableHeadBackground: '#1D1D23',
+      strong: '#000000',
+      strongComplement: '#000000',
     },
   },
 };

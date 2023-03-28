@@ -24,6 +24,8 @@ export interface ColorsObject {
   tableBorder: string;
   tableHeadText: string;
   tableHeadBackground: string;
+  strong: string;
+  strongComplement: string;
 }
 
 export type ThemeColor = keyof ColorsObject;

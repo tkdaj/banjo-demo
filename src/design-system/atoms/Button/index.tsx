@@ -1,17 +1,21 @@
-import type { ParentProps } from 'solid-js';
+import type { ComponentProps, ParentProps } from 'solid-js';
+import { mergeProps, createMemo, splitProps } from 'solid-js';
 import { css } from 'solid-styled';
 
 import type { ButtonConfiguration } from './button.styles';
 import { getButtonStyles } from './button.styles';
 
-interface ButtonProps extends ParentProps<ButtonConfiguration> {
-  onClick: (e: MouseEvent) => void;
-}
+type ButtonProps = ParentProps<ButtonConfiguration & ComponentProps<'button'>>;
 
 export function Button(props: ButtonProps) {
-  const size = () => props.size;
-  const variant = () => props.variant;
-  const buttonStyles = () => getButtonStyles({ size: size(), variant: variant() });
+  const [nonNative, native] = splitProps(props, ['size', 'variant', 'style']);
+  const buttonStyles = createMemo(() => {
+    const mergedStyles = mergeProps(
+      getButtonStyles({ size: nonNative.size, variant: nonNative.variant }),
+      nonNative.style
+    );
+    return mergedStyles;
+  });
   css`
     button {
       &:hover {
@@ -26,7 +30,7 @@ export function Button(props: ButtonProps) {
     }
   `;
   return (
-    <button style={buttonStyles()} type="button" onClick={(e) => props.onClick(e)}>
+    <button style={buttonStyles()} type="button" {...native}>
       {props.children}
     </button>
   );
