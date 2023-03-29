@@ -2,6 +2,7 @@ import { createMemo, createSignal } from 'solid-js';
 
 import { Button, Typography } from '@banjo/atoms';
 import { pxToRem, ThemeToggleButton, useTheme } from '@banjo/theme';
+import { makeStuffLookRealTimeyish } from 'src/api/orders/mocks';
 import { NewOrderModal } from 'src/components/NewOrderModal';
 import { OrderTable } from 'src/components/OrderTable';
 export default function Home() {
@@ -51,7 +52,10 @@ export default function Home() {
             <Button
               style={{ 'margin-right': pxToRem(8) }}
               variant={themeName() === 'dark' ? 'dominant' : 'primary'}
-              onClick={() => setOpen((prev) => !prev)}
+              onClick={() => {
+                localStorage.clear();
+                makeStuffLookRealTimeyish();
+              }}
             >
               Clear Mock DB
             </Button>

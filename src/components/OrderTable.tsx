@@ -53,7 +53,7 @@ export function OrderTable() {
                   <Typography>{order.orderNumber}</Typography>
                 </Table.Cell>
                 <Table.Cell style={{ width: pxToRem(209) }}>
-                  <Typography configName="tableBodySmall">{order.team}</Typography>
+                  <Typography configName="tableBodySmall">{order.department}</Typography>
                 </Table.Cell>
                 <Table.Cell style={{ width: pxToRem(181) }}>
                   <Typography>{order.dueDate.toLocaleDateString()}</Typography>

@@ -27,20 +27,12 @@ export function Input(props: InputProps) {
     }
   `;
 
-  const styles = () =>
-    props.type === 'text'
-      ? ''
-      : `
-      padding-right: ${pxToRem(24)};
-      cursor: pointer;
-  `;
-
   return (
     <input
       class="input-box"
+      required
       value={props.value()}
       type={props.type}
-      style={styles()}
       onChange={(e) => props.setValue(e.currentTarget.value)}
     />
   );

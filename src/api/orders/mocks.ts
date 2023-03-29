@@ -6,7 +6,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Alice',
     priority: 'Low',
     orderNumber: 'XJ-101',
-    team: 'Engineering',
+    department: 'Engineering',
     dueDate: new Date('2023-04-05'),
   },
   {
@@ -14,7 +14,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Bob',
     priority: 'Medium',
     orderNumber: 'XJ-102',
-    team: 'Design',
+    department: 'Design',
     dueDate: new Date('2023-04-15'),
   },
   {
@@ -22,7 +22,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Charlie',
     priority: 'High',
     orderNumber: 'XJ-103',
-    team: 'Sales',
+    department: 'Sales',
     dueDate: new Date('2023-04-10'),
   },
   {
@@ -30,7 +30,7 @@ export const mockOrders: Order[] = [
     teamMember: 'David',
     priority: 'Low',
     orderNumber: 'XJ-104',
-    team: 'Marketing',
+    department: 'Marketing',
     dueDate: new Date('2023-04-18'),
   },
   {
@@ -38,7 +38,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Eve',
     priority: 'Medium',
     orderNumber: 'XJ-105',
-    team: 'Engineering',
+    department: 'Engineering',
     dueDate: new Date('2023-04-22'),
   },
   {
@@ -46,7 +46,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Frank',
     priority: 'High',
     orderNumber: 'XJ-106',
-    team: 'Design',
+    department: 'Design',
     dueDate: new Date('2023-04-11'),
   },
   {
@@ -54,7 +54,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Grace',
     priority: 'Low',
     orderNumber: 'XJ-107',
-    team: 'Sales',
+    department: 'Sales',
     dueDate: new Date('2023-04-28'),
   },
   {
@@ -62,7 +62,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Hannah',
     priority: 'Medium',
     orderNumber: 'XJ-108',
-    team: 'Marketing',
+    department: 'Marketing',
     dueDate: new Date('2023-04-20'),
   },
   {
@@ -70,7 +70,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Ian',
     priority: 'High',
     orderNumber: 'XJ-109',
-    team: 'Engineering',
+    department: 'Engineering',
     dueDate: new Date('2023-04-14'),
   },
   {
@@ -78,7 +78,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Jane',
     priority: 'Low',
     orderNumber: 'XJ-110',
-    team: 'Design',
+    department: 'Design',
     dueDate: new Date('2023-04-25'),
   },
   {
@@ -86,7 +86,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Katie',
     priority: 'Medium',
     orderNumber: 'XJ-111',
-    team: 'Sales',
+    department: 'Sales',
     dueDate: new Date('2023-04-09'),
   },
   {
@@ -94,7 +94,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Leo',
     priority: 'High',
     orderNumber: 'XJ-112',
-    team: 'Marketing',
+    department: 'Marketing',
     dueDate: new Date('2023-04-12'),
   },
   {
@@ -102,7 +102,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Megan',
     priority: 'Low',
     orderNumber: 'XJ-113',
-    team: 'Engineering',
+    department: 'Engineering',
     dueDate: new Date('2023-04-30'),
   },
   {
@@ -110,7 +110,7 @@ export const mockOrders: Order[] = [
     teamMember: 'Oscar',
     priority: 'High',
     orderNumber: 'XJ-114',
-    team: 'Design',
+    department: 'Design',
     dueDate: new Date('2023-04-19'),
   },
   {
@@ -118,9 +118,14 @@ export const mockOrders: Order[] = [
     teamMember: 'Pamela',
     priority: 'Medium',
     orderNumber: 'XJ-115',
-    team: 'Sales',
+    department: 'Sales',
     dueDate: new Date('2023-04-16'),
   },
 ];
 
-export const departments = Array.from(new Set(mockOrders.map((order) => order.team)));
+export const departments = Array.from(new Set(mockOrders.map((order) => order.department)));
+
+export function makeStuffLookRealTimeyish() {
+  // don't have real-time global store, so refreshing the page to update the UI with new values for this demo
+  window.location.reload();
+}

@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
 import { createMemo, createSignal } from 'solid-js';
 
+import { orderApi } from '@banjo/api';
 import type { ModalProps, SelectOption } from '@banjo/atoms';
 import { Input, Select, Button, Modal, Typography } from '@banjo/atoms';
 import type { Priority } from '@banjo/types';
 import { PRIORITY } from '@banjo/types';
-import { departments } from 'src/api/orders/mockOrders';
+import { departments, makeStuffLookRealTimeyish } from 'src/api/orders/mocks';
 
 type MainModalProps = Omit<ModalProps, 'children'>;
 
@@ -71,10 +72,17 @@ export function NewOrderModal(props: MainModalProps) {
       <Modal.Body>
         <form
           id="new-order-form"
-          noValidate
-          onSubmit={(e) => {
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onSubmit={async (e) => {
             e.preventDefault();
-            console.log('submitting form');
+            await orderApi.addOrder({
+              teamMember: teamMember(),
+              priority: selectedPriority().value as Priority,
+              department: selectedDepartment().value.toString(),
+              dueDate: new Date(dueDate()),
+            });
+            closeModal();
+            makeStuffLookRealTimeyish();
           }}
           style={bodyStyles()}
         >

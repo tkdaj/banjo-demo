@@ -11,6 +11,6 @@ export interface Order {
   teamMember: string;
   priority: Priority;
   orderNumber: string;
-  team: string;
+  department: string;
   dueDate: Date;
 }

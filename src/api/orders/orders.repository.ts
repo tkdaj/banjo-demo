@@ -2,11 +2,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 import type { Order } from '@banjo/types';
 
-import { mockOrders } from './mockOrders';
+import { mockOrders } from './mocks';
 
 export interface OrderRepository {
   getOrders(): Promise<Order[]>;
-  addOrder(newOrder: Omit<Order, 'id'>): Promise<boolean>;
+  addOrder(newOrder: Omit<Order, 'id' | 'orderNumber'>): Promise<boolean>;
 }
 
 const localhostKey = 'demoDbKey';
@@ -56,7 +56,7 @@ export const orderRepo: OrderRepository = {
     return delay(() => {
       try {
         const currentOrders = loadOrders();
-        currentOrders.push({ id: uuidv4(), ...order });
+        currentOrders.push({ id: uuidv4(), orderNumber: uuidv4(), ...order });
         saveOrders(currentOrders);
         return true;
       } catch (e) {
