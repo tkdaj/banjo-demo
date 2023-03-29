@@ -26,6 +26,7 @@ export interface ColorsObject {
   tableHeadText: string;
   tableHeadBackground: string;
   pageHeader: string;
+  placeholder: string;
   strong: string;
   strongComplement: string;
 }

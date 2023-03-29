@@ -47,11 +47,20 @@ export default function Home() {
             </Typography>
             <ThemeToggleButton />
             <br />
+
+            <Button
+              style={{ 'margin-right': pxToRem(8) }}
+              variant={themeName() === 'dark' ? 'dominant' : 'primary'}
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              Clear Mock DB
+            </Button>
+
             <Button
               variant={themeName() === 'dark' ? 'dominant' : 'primary'}
               onClick={() => setOpen((prev) => !prev)}
             >
-              {`${open() ? 'Hide' : 'Show'} Modal`}
+              New Order
             </Button>
           </div>
           <OrderTable />

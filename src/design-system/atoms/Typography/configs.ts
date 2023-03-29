@@ -104,4 +104,13 @@ export const typographyConfigs = {
       color: theme.palette.colors.tableHeadText,
     },
   },
+  selectText: {
+    tag: 'span',
+    styles: {
+      'font-size': pxToRem(13),
+      'line-height': pxToRem(13),
+      'font-weight': 500,
+      color: theme.palette.colors.pageHeader,
+    },
+  },
 } as const;

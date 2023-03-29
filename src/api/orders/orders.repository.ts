@@ -13,9 +13,14 @@ const localhostKey = 'demoDbKey';
 const delayMS = 120;
 
 function initializeMockDb() {
-  const savedOrders = loadOrders();
-  if (savedOrders.length === 0) {
-    saveOrders(mockOrders);
+  // If you want to start with an empty table, set this to false
+  const prefillTable = false;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (prefillTable) {
+    const savedOrders = loadOrders();
+    if (savedOrders.length === 0) {
+      saveOrders(mockOrders);
+    }
   }
 }
 
